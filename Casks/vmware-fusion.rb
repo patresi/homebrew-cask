@@ -1,10 +1,12 @@
 cask 'vmware-fusion' do
-  version '8.5.1-4543325'
-  sha256 'df1ff3bc4509fb9cd4ca96b7a818102d65f0d088157dfb261cbbeaa9d339264e'
+  version '8.5.6-5234762'
+  sha256 '57a879095c9fcce0066bea0d3c203571689fb53205915fda156c0d742f7c7ad2'
 
   url "https://download3.vmware.com/software/fusion/file/VMware-Fusion-#{version}.dmg"
+  appcast 'https://softwareupdate.vmware.com/cds/vmw-desktop/fusion.xml',
+          checkpoint: '7fe1f74eeb14204ecabbfb9c1eb69750f2a5e2de273a0ffbcbddcb16c656872f'
   name 'VMware Fusion'
-  homepage 'https://www.vmware.com/products/fusion/'
+  homepage 'https://www.vmware.com/products/fusion.html'
 
   auto_updates true
 
@@ -34,6 +36,12 @@ cask 'vmware-fusion' do
   binary "#{appdir}/VMware Fusion.app/Contents/Library/vmware-vmx-stats"
   binary "#{appdir}/VMware Fusion.app/Contents/Library/VMware OVF Tool/ovftool"
 
+  postflight do
+    system_command "#{appdir}/VMware Fusion.app/Contents/Library/Initialize VMware Fusion.tool",
+                   args: ['set'],
+                   sudo: true
+  end
+
   uninstall_preflight do
     set_ownership "#{appdir}/VMware Fusion.app"
   end
@@ -41,10 +49,16 @@ cask 'vmware-fusion' do
   zap delete: [
                 # note: '~/Library/Application Support/VMware Fusion' is not safe
                 # to delete. In older versions, VM images were located there.
+                '/Library/Application Support/VMware',
+                '/Library/Logs/VMware Fusion Services.log',
+                '/Library/Logs/VMware',
                 '/Library/Preferences/VMware Fusion',
+                '~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.vmware.fusion.sfl',
                 '~/Library/Caches/com.vmware.fusion',
-                '~/Library/Logs/VMware',
                 '~/Library/Logs/VMware Fusion',
+                '~/Library/Logs/VMware Graphics Service.log',
+                '~/Library/Logs/VMware',
+                '~/Library/Preferences/VMware Fusion',
                 '~/Library/Preferences/com.vmware.fusion.LSSharedFileList.plist',
                 '~/Library/Preferences/com.vmware.fusion.LSSharedFileList.plist.lockfile',
                 '~/Library/Preferences/com.vmware.fusion.plist',
@@ -53,5 +67,7 @@ cask 'vmware-fusion' do
                 '~/Library/Preferences/com.vmware.fusionDaemon.plist.lockfile',
                 '~/Library/Preferences/com.vmware.fusionStartMenu.plist',
                 '~/Library/Preferences/com.vmware.fusionStartMenu.plist.lockfile',
+                '~/Library/Saved Application State/com.vmware.fusion.savedState',
+                '~/Library/WebKit/com.vmware.fusion',
               ]
 end

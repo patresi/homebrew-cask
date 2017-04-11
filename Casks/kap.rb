@@ -1,11 +1,11 @@
 cask 'kap' do
-  version '0.3.0'
-  sha256 '26ddc84a87ed1fd1045785f929117c352b8525ab0ac36b486eb63ab0c7018a4b'
+  version '1.0.1.1'
+  sha256 'f51902982b80925b6cf1fe81c920d4a3a0bb841dfb5bbae5879f934beeb2eae7'
 
   # github.com/wulkano/kap was verified as official when first introduced to the cask
-  url "https://github.com/wulkano/kap/releases/download/v#{version}/Kap-#{version}.dmg"
+  url "https://github.com/wulkano/kap/releases/download/v#{version.major_minor_patch}/Kap-#{version}.dmg"
   appcast 'https://github.com/wulkano/kap/releases.atom',
-          checkpoint: '708f9430dc40123e9ad729914a9de5295e37c98f9f1de5853636183a5c98508f'
+          checkpoint: 'e67cf1cab1106059a7d545b04c56731ef398c41fb0c692138a4579f0d97dc890'
   name 'Kap'
   homepage 'https://getkap.co/'
 

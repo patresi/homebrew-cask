@@ -4,7 +4,7 @@ cask 'spotify' do
 
   url 'https://download.spotify.com/Spotify.dmg'
   name 'Spotify'
-  homepage 'https://www.spotify.com'
+  homepage 'https://www.spotify.com/'
 
   auto_updates true
   depends_on macos: '>= :lion'
@@ -19,7 +19,9 @@ cask 'spotify' do
                 '~/Library/Preferences/com.spotify.client.plist',
                 '~/Library/Preferences/com.spotify.client.helper.plist',
                 '~/Library/Caches/com.spotify.client',
+                '~/Library/Caches/com.spotify.client.helper',
                 '~/Library/Saved Application State/com.spotify.client.savedState',
                 '~/Library/Logs/Spotify',
+                '~/Library/Cookies/com.spotify.client.binarycookies',
               ]
 end

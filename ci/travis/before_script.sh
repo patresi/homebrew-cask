@@ -10,9 +10,20 @@
 
 header 'Running before_script.sh...'
 
-# work around travis osx bug
-# https://github.com/travis-ci/travis-ci/issues/6307#issuecomment-233315824
-run rvm get head
+# Required workarounds
+run gpg2 --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 # Required by RVM: https://rvm.io/rvm/security
+run rvm get stable # Required due to Travis bug: https://github.com/travis-ci/travis-ci/issues/6307#issuecomment-233315824
+
+# see https://github.com/travis-ci/travis-ci/issues/2666
+run export BRANCH_COMMIT="${TRAVIS_COMMIT_RANGE##*.}"
+run export TARGET_COMMIT="${TRAVIS_COMMIT_RANGE%%.*}"
+# shellcheck disable=SC2016
+if ! run 'MERGE_BASE="$(git merge-base "${BRANCH_COMMIT}" "${TARGET_COMMIT}")"'; then
+  run git fetch --unshallow
+  run 'MERGE_BASE="$(git merge-base "${BRANCH_COMMIT}" "${TARGET_COMMIT}")"'
+fi
+run export MERGE_BASE="${MERGE_BASE}"
+run export TRAVIS_COMMIT_RANGE="${MERGE_BASE}...${BRANCH_COMMIT}"
 
 # capture system ruby and gem locations
 run export SYSTEM_RUBY_HOME="/System/Library/Frameworks/Ruby.framework/Versions/Current"

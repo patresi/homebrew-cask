@@ -1,10 +1,10 @@
 cask 'dash' do
-  version '3.4'
-  sha256 '0915e485a9a38504d6d0107fbe7636aa7ba910d7b3ad8f5be67c15d437ca6856'
+  version '4.0.2'
+  sha256 'b0cc64d4390ffb8f3862d76950960566ed76a92a3a1ae0590e875540795cf17a'
 
   url "https://kapeli.com/downloads/v#{version.major}/Dash.zip"
   appcast "https://kapeli.com/Dash#{version.major}.xml",
-          checkpoint: 'e8d7a100c45c3defb5116569cc5ecf14adb8aae7ad3474c99fcfe0f890bcfc5d'
+          checkpoint: '0c830ce908945d540c04f1098a9e7f2d780ad3c76d82c7841307764f5e572198'
   name 'Dash'
   homepage 'https://kapeli.com/dash'
 
@@ -18,6 +18,7 @@ cask 'dash' do
 
   zap delete: [
                 '~/Library/Application Support/Dash',
+                '~/Library/Application Support/com.kapeli.dashdoc',
                 '~/Library/Preferences/com.kapeli.dash.plist',
                 '~/Library/Preferences/com.kapeli.dashdoc.plist',
               ]

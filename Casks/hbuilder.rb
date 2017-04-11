@@ -1,11 +1,11 @@
 cask 'hbuilder' do
-  version '7.3.0'
-  sha256 '2721f2280e0e21960bf92c601cd2b435c309c7948a2f2cba5c41b769a1e4cc2f'
+  version '8.0.2'
+  sha256 '972e5614d66624306e52726e339842155064bc744148ef7eb54c8441c4c7a828'
 
   # download.dcloud.net.cn was verified as official when first introduced to the cask
-  url "http://download.dcloud.net.cn/HBuilder.#{version}.macosx_64.tar.gz"
+  url "http://download.dcloud.net.cn/HBuilder.#{version}.macosx_64.dmg"
   name 'HBuilder'
-  homepage 'http://dcloud.io/'
+  homepage 'https://www.dcloud.io/'
 
   app 'HBuilder.app'
 end

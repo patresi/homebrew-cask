@@ -1,13 +1,17 @@
 cask 'oryoki' do
-  version '0.0.4'
-  sha256 '9936a9518e550297aec7add335cb56446b9eb447b5ae3bf9bf8da7492a42bd58'
+  version '0.1.0'
+  sha256 '162d1f42ab4baadfa1eeb4a3607b4384b510e7b0cabd1e160c62544473847579'
 
   # github.com/thmsbfft/oryoki was verified as official when first introduced to the cask
   url "https://github.com/thmsbfft/oryoki/releases/download/#{version}/Oryoki-#{version}.zip"
   appcast 'https://github.com/thmsbfft/oryoki/releases.atom',
-          checkpoint: '9e55a53a7930644516bb896ae8ea7be624586ebc08c8cb17d127ae3596a17107'
+          checkpoint: '71bb3809095da7768cd8473fff26258612291f27f4c95a2cf80a677b9d097bcf'
   name 'Oryoki'
+  name 'Ōryōki'
+  name '応量器'
   homepage 'http://oryoki.io/'
+
+  depends_on macos: '>= :el_capitan'
 
   app 'Oryoki.app'
 end

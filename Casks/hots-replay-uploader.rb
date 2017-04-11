@@ -1,10 +1,10 @@
 cask 'hots-replay-uploader' do
-  version '2.1.1'
-  sha256 'f338c76bdc2fb875d445ddeb4fe6734fedc932381268f228dcc6c2dfe02a6735'
+  version '2.1.4'
+  sha256 '717b012359599efc6ccbbae3bbeb130c48ffc83c45885847fe0364bda8f37dcc'
 
   url "https://github.com/eivindveg/HotSUploader/releases/download/v#{version}/HotS.Replay.Uploader-#{version}.dmg"
   appcast 'https://github.com/eivindveg/HotSUploader/releases.atom',
-          checkpoint: 'bfe84d8cb453a9b75cb5ac94a4fbb2729b5d4c0983a4f0536535f9d93aa842c5'
+          checkpoint: '470f8ede53d912c0f7b505bc13a71b53f45f7e98c3c929e7334cc9e20ca6d9c2'
   name 'HotS Replay Uploader'
   homepage 'https://github.com/eivindveg/HotSUploader/'
 

@@ -8,11 +8,11 @@ cask 'clamxav' do
     sha256 '02a7529c74d11724e2d0e8226ac83a0d3cfb599afb354d02f6609632d69d9eb1'
     url "https://www.clamxav.com/downloads/ClamXav_#{version}.dmg"
   else
-    version '2.10_2648'
-    sha256 '37b869e9e3fb1c2e088e51387fa757b95c047743a4d81fe31f9349e2ae27ae0b'
+    version '2.12_3050'
+    sha256 'abb487c8b2c4e10b73d4a88b289f947a0b9f044862e077a304c230dadd9fc699'
     url "https://www.clamxav.com/downloads/ClamXav_#{version}.zip"
     appcast 'https://www.clamxav.com/sparkle/appcast.xml',
-            checkpoint: 'a7e21537f5b106e7f890edae1262108d125b755394dfdfe1aca51d348fdb45d1'
+            checkpoint: 'c0bed429b19e3c7d088a0c118521f7d37a2dadf6eabedcd9f8205e41c8a320be'
   end
 
   name 'ClamXav'
@@ -26,9 +26,7 @@ cask 'clamxav' do
 
   zap delete: [
                 '~/Library/Caches/uk.co.markallan.clamxav',
-                '~/Library/Logs/clamXav-scan.log',
-                # TODO: glob/expand needed here
-                '~/Library/Logs/clamXav-scan.log.0.bz2',
+                '~/Library/Logs/clamXav-scan.*',
               ]
 
   caveats do

@@ -1,6 +1,6 @@
 cask 'lima' do
-  version '1.2.1'
-  sha256 '6863bdadb85ebfeb96d52d9b695329a0b4e907ac82220ed448be2ce972ec2739'
+  version '1.3.0'
+  sha256 'f9b96b68f42f01a1ec61313bf951b81881668087672391d6ede6a9a12c1eee40'
 
   url "https://update.api.meetlima.com/downloads/osx/dist/Lima_#{version}.dmg"
   name 'Lima'

@@ -1,12 +1,24 @@
 cask 'little-snitch' do
-  version '3.7'
-  sha256 '5c44d853dc4178fb227abd3e8eee19ef1bf0d576f49b5b6a9a7eddf6ae7ea951'
+  if MacOS.version <= :mountain_lion
+    version '3.3.4'
+    sha256 '19dfcd33594fc14be321c3f54651059029b73f715158e0498ba01ceb69bf6c4a'
+    url "https://www.obdev.at/downloads/littlesnitch/legacy/LittleSnitch-#{version}.dmg"
+  elsif MacOS.version <= :mavericks
+    version '3.6.4'
+    sha256 '143070b3d8fd7370aa9c7881d3239efe33f05f4d4413a46e22988dd64f5b5223'
+    url "https://www.obdev.at/downloads/littlesnitch/legacy/LittleSnitch-#{version}.dmg"
+  else
+    version '3.7.4'
+    sha256 'b0ce3519d72affbc7910c24c264efa94aa91c9ad9b1a905c52baa9769156ea22'
+    url "https://www.obdev.at/downloads/littlesnitch/LittleSnitch-#{version}.dmg"
+  end
 
-  url "https://www.obdev.at/downloads/littlesnitch/LittleSnitch-#{version}.dmg"
   appcast 'https://www.obdev.at/products/littlesnitch/releasenotes.html',
-          checkpoint: 'eec25e526fc37ad3c828973eacfff88e7835a3b05dbc4f4332f62d7330072a83'
+          checkpoint: 'ddcf9a82b606ed6f11abee06780285182bbbc6aa77c43b0f7b279554514ba9bc'
   name 'Little Snitch'
-  homepage 'https://www.obdev.at/products/littlesnitch/'
+  homepage 'https://www.obdev.at/products/littlesnitch/index.html'
+
+  auto_updates true
 
   installer manual: 'Little Snitch Installer.app'
 
@@ -31,4 +43,8 @@ cask 'little-snitch' do
       rmdir:  [
                 '/Library/Application Support/Objective Development',
               ]
+
+  caveats do
+    reboot
+  end
 end

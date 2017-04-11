@@ -1,30 +1,32 @@
 cask 'wireshark' do
-  version '2.2.1'
-  sha256 '34484020d8888dcfb8559e6ed5b3c4f01686d24a6260a6fbedafa66bffdb45e6'
+  version '2.2.5'
+  sha256 '459998af108d3c002bf23db703af13cd56cff35da0d93eceb0e8f722aa26d71c'
 
   url "https://www.wireshark.org/download/osx/Wireshark%20#{version}%20Intel%2064.dmg"
+  appcast 'https://www.wireshark.org/download/osx/',
+          checkpoint: '46112b2ccfdd4900eef5f6b633f22f67f2d003a8b6f17fd951b0aa6fc7e0d28e'
   name 'Wireshark'
   homepage 'https://www.wireshark.org/'
+
+  depends_on macos: '>= :mountain_lion'
 
   pkg "Wireshark #{version} Intel 64.pkg"
 
   postflight do
-    if Process.euid.zero?
-      ohai 'Note:'
-      puts <<-EOS.undent
-        You executed 'brew cask' as the superuser.
-
-        You must manually add users to group 'access_bpf' in order to use Wireshark
-      EOS
-    else
-      system '/usr/bin/sudo', '-E', '--',
-             '/usr/sbin/dseditgroup', '-o', 'edit', '-a', Etc.getpwuid(Process.euid).name, '-t', 'user', '--', 'access_bpf'
-    end
+    system_command '/usr/sbin/dseditgroup',
+                   args: [
+                           '-o', 'edit',
+                           '-a', Etc.getpwuid(Process.euid).name,
+                           '-t', 'user',
+                           '--', 'access_bpf'
+                         ],
+                   sudo: true
   end
 
   uninstall script:  {
                        executable: '/usr/sbin/dseditgroup',
                        args:       ['-o', 'delete', 'access_bpf'],
+                       sudo:       true,
                      },
             pkgutil: 'org.wireshark.*',
             delete:  [

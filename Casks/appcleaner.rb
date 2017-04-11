@@ -17,15 +17,19 @@ cask 'appcleaner' do
   end
 
   name 'AppCleaner'
-  homepage 'https://www.freemacsoft.net/appcleaner/'
+  homepage 'https://freemacsoft.net/appcleaner/'
 
+  auto_updates true
   depends_on macos: '>= :tiger'
 
   app 'AppCleaner.app'
+
+  uninstall quit: 'net.freemacsoft.AppCleaner-SmartDelete'
 
   zap delete: [
                 '~/Library/Caches/net.freemacsoft.AppCleaner',
                 '~/Library/Preferences/net.freemacsoft.AppCleaner.plist',
                 '~/Library/Saved Application State/net.freemacsoft.AppCleaner.savedState',
+                '~/Library/Preferences/net.freemacsoft.AppCleaner-SmartDelete.plist',
               ]
 end

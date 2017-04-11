@@ -1,37 +1,22 @@
 cask 'osxfuse' do
-  version '3.5.3'
-  sha256 '9d48cbfe360bead9e9fd31bc95e18a90f03be7c4be5b5c62acd7df98c8c0c80b'
+  version '3.5.6'
+  sha256 'db4d379200b741ac2f14b2eef61eaabbd1939ed9087a5530a9ec77953831548b'
 
   # github.com/osxfuse was verified as official when first introduced to the cask
   url "https://github.com/osxfuse/osxfuse/releases/download/osxfuse-#{version}/osxfuse-#{version}.dmg"
   appcast 'https://github.com/osxfuse/osxfuse/releases.atom',
-          checkpoint: '7d27fe5e4795751d1e734f3f8e38d62c5fd299f91b5c5a6885de9720dcba3f99'
+          checkpoint: '20c73238f027f8dda4dd1c5e8943e114d87ead4a5bd2e96eef4fdfc4bdd5d6fb'
   name 'OSXFUSE'
   homepage 'https://osxfuse.github.io/'
 
-  installer script: '/usr/sbin/installer',
-            args:   [
-                      '-pkg', "#{staged_path}/Extras/FUSE for macOS #{version}.pkg",
-                      '-target', '/',
-                      '-applyChoiceChangesXML', "#{staged_path}/Extras/Choices.xml"
-                    ]
+  auto_updates true
 
-  preflight do
-    IO.write "#{staged_path}/Extras/Choices.xml", <<-EOS.undent
-      <plist>
-        <array>
-        	<dict>
-        		<key>attributeSetting</key>
-        		<integer>1</integer>
-        		<key>choiceAttribute</key>
-        		<string>selected</string>
-        		<key>choiceIdentifier</key>
-        		<string>com.github.osxfuse.pkg.MacFUSE</string>
-        	</dict>
-        </array>
-      </plist>
-    EOS
-  end
+  pkg "Extras/FUSE for macOS #{version}.pkg",
+      choices: [
+                 'choiceIdentifier' => 'com.github.osxfuse.pkg.MacFUSE',
+                 'choiceAttribute'  => 'selected',
+                 'attributeSetting' => 1,
+               ]
 
   postflight do
     set_ownership ['/usr/local/include', '/usr/local/lib']

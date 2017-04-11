@@ -6,24 +6,22 @@ cask 'handy-outliner' do
   appcast 'https://sourceforge.net/projects/handyoutlinerfo/rss',
           checkpoint: '282f0552ceda6abaad84f75cb938aa90454a111dc309be4fb61aa493553ae99d'
   name 'HandyOutliner for DjVu and PDF'
-  homepage 'http://handyoutlinerfo.sourceforge.net'
+  homepage 'http://handyoutlinerfo.sourceforge.net/'
 
   depends_on cask:    'mono-mdk',
              formula: 'djvulibre'
 
   binary 'handy-outliner'
 
-  preflight do
-    FileUtils.touch "#{staged_path}/handy-outliner"
-    handy_outliner = File.open "#{staged_path}/handy-outliner", 'w'
-    handy_outliner.puts '# !/bin/bash'
-    handy_outliner.puts 'BASEDIR=$(dirname "$(readlink -n $0)")'
-    handy_outliner.puts "$BASEDIR/handyoutliner_#{version}/start-macos"
-    handy_outliner.close
-  end
+  # shim script (https://github.com/caskroom/homebrew-cask/issues/18809)
+  shimscript = "#{staged_path}/handy-outliner"
 
-  postflight do
-    set_permissions "#{staged_path}/handy-outliner", '+x'
+  preflight do
+    IO.write shimscript, <<-EOS.undent
+      # !/bin/sh
+      BASEDIR="$(dirname "$(readlink -n $0)")"
+      $BASEDIR/handyoutliner_#{version}/start-macos
+    EOS
   end
 
   caveats do

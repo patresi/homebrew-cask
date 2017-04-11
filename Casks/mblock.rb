@@ -1,9 +1,11 @@
 cask 'mblock' do
-  version '3.3.8'
-  sha256 '24a4fab58635088dc2b7c08e3b34333ca2bd32da37f126d6316bca3bea9fc1ce'
+  version '3.4.6'
+  sha256 'eda804040b11cae94befc7496f50bd1604cb38add085c3851301cacb8a7aa360'
 
-  # download.makeblock.com was verified as official when first introduced to the cask
-  url "http://download.makeblock.com/mblock/v_#{version.dots_to_underscores}/mBlock_mac_V#{version}.zip"
+  # mblock.makeblock.com was verified as official when first introduced to the cask
+  url "http://mblock.makeblock.com/mBlock_mac_V#{version}.zip"
+  appcast 'http://www.mblock.cc/release-logs',
+          checkpoint: 'eae248ff688253aa1a80cac15850bb574d0c085066563d83e5b853a0f89d9acb'
   name 'mBlock'
   homepage 'http://www.mblock.cc/'
 

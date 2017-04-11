@@ -1,11 +1,11 @@
 cask 'hyper' do
-  version '0.8.3'
-  sha256 '11ecdfc72684c368d3f4d85c9f0893f8e95956e54d2293ba8217691f49955895'
+  version '1.3.1'
+  sha256 '00c622b181a83cb9e458f7d16704b32ce37a92d85a6dfe5fdac9356fb7fdc7d5'
 
   # github.com/zeit/hyper was verified as official when first introduced to the cask
   url "https://github.com/zeit/hyper/releases/download/#{version}/hyper-#{version}-mac.zip"
   appcast 'https://github.com/zeit/hyper/releases.atom',
-          checkpoint: '6cca58976de777655fa5675bf007780293a8f57bdf124e64bf825459dd1e84cf'
+          checkpoint: 'a47b64cf6d22b8e442b840fa6e7707873dd86139d23ad6d629974ec0644be26b'
   name 'Hyper'
   homepage 'https://hyper.is/'
 
@@ -13,7 +13,7 @@ cask 'hyper' do
 
   zap delete: [
                 '~/.hyper.js',
-                '~/.hyper_modules',
+                '~/.hyper_plugins',
                 '~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/co.zeit.hyper.sfl',
                 '~/Library/Application Support/Hyper',
                 '~/Library/Caches/co.zeit.hyper',

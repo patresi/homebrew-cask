@@ -10,17 +10,16 @@ cask 'sage' do
     # mit.edu/sage was verified as official when first introduced to the cask
     url "http://mirrors.mit.edu/sage/osx/intel/sage-#{version}-OSX_10.9.5-x86_64.app.dmg"
   else
-    version '7.4'
-    sha256 '99ba664250755f14bf98bb149d9b59d80b9e1612897353c70fb8e1388a090315'
+    version '7.6'
+    sha256 'dbd5e79825ad505dbf852c8c794cd604a3bd560151fb3ec08a9df7f9c5626ab2'
     # mit.edu/sage was verified as official when first introduced to the cask
-    url "http://mirrors.mit.edu/sage/osx/intel/sage-#{version}-OSX_10.11.6-x86_64.app.dmg"
+    url "http://mirrors.mit.edu/sage/osx/intel/sage-#{version}-OSX_10.12.3-x86_64.app.dmg"
   end
 
   name 'Sage'
   homepage 'https://www.sagemath.org/'
 
   depends_on macos: '>= :lion'
-  depends_on arch: :x86_64
 
   app "SageMath-#{version}.app"
   binary "#{appdir}/SageMath-#{version}.app/Contents/Resources/sage/sage"
@@ -31,8 +30,4 @@ cask 'sage' do
                 '~/Library/Logs/sage.log',
                 '~/Library/Preferences/org.sagemath.Sage.plist',
               ]
-
-  caveats do
-    files_in_usr_local
-  end
 end

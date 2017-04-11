@@ -1,8 +1,10 @@
 cask 'charles' do
-  version '4.0.1'
-  sha256 '4e5e6589a3c0b7cebefb70818735a03e6e5f11f497d9c559641238867b2092da'
+  version '4.1'
+  sha256 '27d8843b5a7da976215f28440918186093a14b4f9e4630199b31aaaa0b60142a'
 
   url "https://www.charlesproxy.com/assets/release/#{version}/charles-proxy-#{version}.dmg"
+  appcast 'https://www.charlesproxy.com/latest.do',
+          checkpoint: 'ccc8c8540a4da7ae55474bbcafcf335a2dde73265b3bbd29ffa047c08777f307'
   name 'Charles'
   homepage 'https://www.charlesproxy.com/'
 
@@ -10,6 +12,8 @@ cask 'charles' do
 
   zap delete: [
                 '~/Library/Application Support/Charles',
+                '~/Library/Preferences/com.xk72.Charles.plist',
                 '~/Library/Preferences/com.xk72.charles.config',
+                '~/Library/Saved Application State/com.xk72.Charles.savedState',
               ]
 end

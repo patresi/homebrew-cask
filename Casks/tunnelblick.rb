@@ -1,15 +1,13 @@
 cask 'tunnelblick' do
-  if MacOS.version <= :snow_leopard
-    version '3.5.10_build_4270.4563'
-    sha256 '2219f7ffcf5a5be7fb5f55945a19f6b3966e73d500feb03d8c376a0e00640ade'
-  else
-    version '3.6.8_build_4625'
-    sha256 'b7df41b116c0bce18101a0574ff35099ccaa944abb9db3e505b32a1068d5d5f1'
-  end
+  version '3.7.1beta02,4810'
+  sha256 '67fba12a44e57e7330feefa84d0a5c80f70093be7205735817d85ae68ed58707'
 
-  url "https://www.tunnelblick.net/release/Tunnelblick_#{version}.dmg"
+  # github.com/Tunnelblick/Tunnelblick/releases/download was verified as official when first introduced to the cask
+  url "https://github.com/Tunnelblick/Tunnelblick/releases/download/v#{version.before_comma}/Tunnelblick_#{version.before_comma}_build_#{version.after_comma}.dmg"
+  appcast 'https://github.com/Tunnelblick/Tunnelblick/releases.atom',
+          checkpoint: 'b0e677e5c750198fe071b45cb221e3db24317bd1daf1c0d4d0311738946118e6'
   name 'Tunnelblick'
-  homepage 'https://www.tunnelblick.net'
+  homepage 'https://www.tunnelblick.net/'
 
   auto_updates true
   depends_on macos: '>= :tiger'

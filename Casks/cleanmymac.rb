@@ -19,7 +19,10 @@ cask 'cleanmymac' do
             checkpoint: 'e29bde675d18732b441d8bb7e0850356a9ef2192efc68276ec1c146904ae1c13'
     app "CleanMyMac #{version.major}.app"
 
-    uninstall launchctl: "com.macpaw.CleanMyMac#{version.major}.Agent"
+    uninstall launchctl: [
+                           "com.macpaw.CleanMyMac#{version.major}.Agent",
+                           "com.macpaw.CleanMyMac#{version.major}.Scheduler",
+                         ]
 
     zap delete: [
                   "/Library/LaunchDaemons/com.macpaw.CleanMyMac#{version.major}.Agent.plist",
@@ -34,36 +37,46 @@ cask 'cleanmymac' do
                   "~/Library/Preferences/com.macpaw.CleanMyMac#{version.major}.plist",
                 ]
   else
-    version '3.5.1,1474556872'
-    sha256 'c3d09bb6d7138cc35f1d1334e0a3f2847db8d6527f3cb6020480023839b485a5'
+    version '3.7.4,1488469864'
+    sha256 'b360c112faab11b8961ec66e308adf9b7c069118b7dad022a0dd612d9caa68f6'
 
     # devmate.com/com.macpaw.CleanMyMac3 was verified as official when first introduced to the cask
     url "https://dl.devmate.com/com.macpaw.CleanMyMac#{version.major}/#{version.major_minor_patch}/#{version.after_comma}/CleanMyMac3-#{version.major_minor_patch}.zip"
     appcast "https://updates.devmate.com/com.macpaw.CleanMyMac#{version.major}.xml",
-            checkpoint: 'e85549fda1ff6742bc90114ebd4662fa3956042c80dd070213c6b445b50f06b9'
+            checkpoint: '3d7499ea526c4306ab1477cea6269bcda458c9cbb62db82ef64bf9e7c48cd9c7'
     app "CleanMyMac #{version.major}.app"
 
     postflight do
       suppress_move_to_applications
     end
 
-    uninstall launchctl: "com.macpaw.CleanMyMac#{version.major}.Agent"
+    uninstall launchctl: [
+                           "com.macpaw.CleanMyMac#{version.major}.Agent",
+                           "com.macpaw.CleanMyMac#{version.major}.Scheduler",
+                         ]
 
     zap delete: [
                   "/Library/LaunchDaemons/com.macpaw.CleanMyMac#{version.major}.Agent.plist",
                   "/Library/PrivilegedHelperTools/com.macpaw.CleanMyMac#{version.major}.Agent",
                   "/Users/Shared/CleanMyMac #{version.major}",
                   "/private/var/run/com.macpaw.CleanMyMac#{version.major}.Agent.socket",
+                  "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.macpaw.cleanmymac#{version.major}.sfl",
+                  "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.macpaw.cleanmymac#{version.major}.scheduler.sfl",
                   "~/Library/Application Support/CleanMyMac #{version.major}",
                   "~/Library/Application Support/CleanMyMac #{version.major} Menu",
                   "~/Library/Caches/CleanMyMac #{version.major}",
+                  "~/Library/Caches/com.apple.helpd/SDMHelpData/Other/English/HelpSDMIndexFile/com.macpaw.CleanMyMac#{version.major}.help",
+                  "~/Library/Caches/com.macpaw.CleanMyMac#{version.major}",
+                  "~/Library/Caches/com.macpaw.CleanMyMac#{version.major}.Menu",
+                  "~/Library/Caches/com.macpaw.CleanMyMac#{version.major}.Scheduler",
                   "~/Library/Logs/CleanMyMac #{version.major}.log",
+                  "~/Library/Logs/com.macpaw.CleanMyMac#{version.major}",
                   "~/Library/Preferences/com.macpaw.CleanMyMac-#{version.major}-Helper.plist",
                   "~/Library/Preferences/com.macpaw.CleanMyMac#{version.major}.KnowledgeBase.plist",
                   "~/Library/Preferences/com.macpaw.cleanmymac#{version.major}.menu.plist",
+                  "~/Library/Preferences/com.macpaw.CleanMyMac#{version.major}.Scheduler.plist",
                   "~/Library/Preferences/com.macpaw.CleanMyMac#{version.major}.plist",
-                  "~/Library/Caches/com.macpaw.CleanMyMac#{version.major}",
-                  "~/Library/Caches/com.macpaw.CleanMyMac#{version.major}.Menu",
+                  "~/Pictures/Photos Library.photoslibrary/private/com.macpaw.CleanMyMac#{version.major}",
                 ]
   end
 

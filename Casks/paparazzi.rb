@@ -1,10 +1,10 @@
 cask 'paparazzi' do
-  version '0.6.7'
-  sha256 '111c94994176a7690512aa5303bff14761f308c720b527b541e39edd054777bd'
+  version '1.0b3'
+  sha256 '62e7f8a2f64f91403b56732ce5ab7d0bb74e13ac9a88ec2c61395ecb4ff32673'
 
   url "https://derailer.org/paparazzi/Paparazzi!%20#{version}.dmg"
   appcast 'https://derailer.org/paparazzi/appcast/',
-          checkpoint: '376d19a4674b030d0b824c7d482bc4ba6af5773df36bbd2578632b5787db6d54'
+          checkpoint: '0334d834f5f9e180045c5b39963b5e8fa7479987644d97ca5ff2ccee535a8930'
   name 'Paparazzi!'
   homepage 'https://derailer.org/paparazzi/'
 

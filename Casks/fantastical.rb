@@ -1,14 +1,14 @@
 cask 'fantastical' do
-  version '2.2.5'
-  sha256 'ad4dafbaf777ab41d51769f0a7c628a8b4d478f81bbbdd4b8429a63a1bc3deeb'
+  version '2.3.6'
+  sha256 '8ec9e80c720f9112c92521b4f133bc086403a7ec4a992d0780259db1c9d61f51'
 
   url "http://cdn.flexibits.com/Fantastical_#{version}.zip"
   appcast 'https://flexibits.com/fantastical/appcast2.php',
-          checkpoint: '0ceed44f4b50a0aa57a70d60a484836bf7a4c7f0d886b154bc65b6def1e50ec2'
+          checkpoint: 'e0e74a37ec16479898a465138189750007c208ed37fc5ab1ca4ef0deee7fca54'
   name 'Fantastical'
   homepage 'https://flexibits.com/fantastical'
 
-  app 'Fantastical 2.app'
+  app "Fantastical #{version.major}.app"
 
   postflight do
     suppress_move_to_applications

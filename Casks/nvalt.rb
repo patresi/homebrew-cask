@@ -1,17 +1,11 @@
 cask 'nvalt' do
-  if MacOS.version <= :mavericks
-    version '2.2b111'
-    sha256 'd787ddf92730bb03ba084e72bc6fb5f4fbd42731fa3531476af9eb3ce39e1cd0'
-    # abyss.designheresy.com/nvaltb was verified as official when first introduced to the cask
-    url "http://abyss.designheresy.com/nvaltb/nvalt#{version}.zip"
-  else
-    version '2.2.5b123'
-    sha256 '3bdefc9f60805ae8f1d0de538eda77a82bb63e50437247e65ae2dd05f3580af7'
-    url "http://assets.brettterpstra.com/nvALT#{version.delete('b')}.dmg"
-  end
+  version '2.2.7-126'
+  sha256 '496e0fb87b255ac6b6746395ff676b788cc455eccd1e65b49a63d0e2812754c3'
 
+  # updates.designheresy.com/nvalt was verified as official when first introduced to the cask
+  url "http://updates.designheresy.com/nvalt/nvALT#{version.no_hyphens}.dmg"
   name 'nvALT'
-  homepage 'http://brettterpstra.com/project/nvalt/'
+  homepage 'http://brettterpstra.com/projects/nvalt/'
 
   app 'nvALT.app'
 

@@ -1,14 +1,15 @@
 cask 'macvim' do
-  version '8.0.114'
-  sha256 '22d260ee8d9ff65af26ff49ebe4360f09fa37911f482125c4d32e62f1582bd28'
+  version '8.0.130'
+  sha256 'fd70339c60ca2cb8b8729f2cbb618812f232bb4987e7f17079cbfb2e5eb0cea9'
 
   url "https://github.com/macvim-dev/macvim/releases/download/snapshot-#{version.patch}/MacVim.dmg"
   appcast 'https://github.com/macvim-dev/macvim/releases.atom',
-          checkpoint: '03284c95779e49b17ad9d018988a598810a26be2b84fea5b8af4fe6ed6cac056'
+          checkpoint: 'a9a6c47c52a67d06d0fc2c805c1065289e9c07d95c1e1e9718471d75caa012e3'
   name 'MacVim'
   homepage 'https://github.com/macvim-dev/macvim'
 
   conflicts_with formula: 'macvim'
+  depends_on macos: '>= :mountain_lion'
 
   app 'MacVim.app'
 
@@ -16,13 +17,11 @@ cask 'macvim' do
     gview
     gvim
     gvimdiff
-    gvimex
     mview
     mvim
     mvimdiff
-    mvimex
   ].each do |link_name|
-    binary 'mvim', target: link_name
+    binary "#{appdir}/MacVim.app/Contents/bin/mvim", target: link_name
   end
 
   zap delete: [

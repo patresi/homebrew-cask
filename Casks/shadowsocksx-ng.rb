@@ -1,14 +1,24 @@
 cask 'shadowsocksx-ng' do
-  version '1.3.1'
-  sha256 'd74bd0c26fd33c653c8d7a2526a1680aee7563b308f333215337d811d79531d8'
+  version '1.4'
+  sha256 'a6b276e40917d3fd8a55fabcf732d3f7577430ac36790f3e062a3f95f4bf086c'
 
-  url "https://github.com/shadowsocks/ShadowsocksX-NG/releases/download/#{version}/ShadowsocksX-NG-#{version}.dmg"
+  url "https://github.com/shadowsocks/ShadowsocksX-NG/releases/download/v#{version}/ShadowsocksX-NG-#{version}.zip"
   appcast 'https://github.com/shadowsocks/ShadowsocksX-NG/releases.atom',
-          checkpoint: '6d3c185ac8307bbc6bced322ac0784f69ce6c2b1e1270674bf8e67f68754d741'
+          checkpoint: '94dea810527b023d1e94b13f76245cc197ff06e1115e33c2da3810768b203fed'
   name 'ShadowsocksX-NG'
-  homepage 'https://github.com/shadowsocks/ShadowsocksX-NG'
+  homepage 'https://github.com/shadowsocks/ShadowsocksX-NG/'
 
   conflicts_with cask: 'shadowsocksx'
 
   app 'ShadowsocksX-NG.app'
+
+  zap delete: [
+                '/Library/Application Support/ShadowsocksX-NG',
+                '~/.ShadowsocksX-NG',
+                '~/Library/Application Support/ShadowsocksX-NG',
+                '~/Library/Caches/com.qiuyuzhou.ShadowsocksX-NG',
+                '~/Library/LaunchAgents/com.qiuyuzhou.shadowsocksX-NG.http.plist',
+                '~/Library/LaunchAgents/com.qiuyuzhou.shadowsocksX-NG.local.plist',
+                '~/Library/Preferences/com.qiuyuzhou.ShadowsocksX-NG.plist',
+              ]
 end

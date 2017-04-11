@@ -1,13 +1,12 @@
 cask 'mattermost' do
-  version '3.4.0'
-  sha256 '612335b46c4e0ffa655f70217e5cd0ba00227645ad2e85841831b4780e3e35b7'
+  version '3.6.0'
+  sha256 '2422c261242106055534d9ee5689131a698351480a3b24d612178994fe44d988'
 
-  # releases.mattermost.com was verified as official when first introduced to the cask
   url "https://releases.mattermost.com/desktop/#{version}/mattermost-desktop-#{version}-osx.tar.gz"
   appcast 'https://github.com/mattermost/desktop/releases.atom',
-          checkpoint: 'c5e741ba52c803e8f88d341dad0d2b544b3aad863d14b4e2eb240e8800099c34'
+          checkpoint: '2b457d45458875bc53e941d74040dec76a298d34be9e2ec33d35115f487672a4'
   name 'Mattermost'
-  homepage 'https://www.mattermost.org/'
+  homepage 'https://about.mattermost.com/'
 
-  app 'mattermost-desktop-osx/Mattermost.app'
+  app 'Mattermost.app'
 end

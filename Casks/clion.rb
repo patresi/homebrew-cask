@@ -1,14 +1,21 @@
 cask 'clion' do
-  version '2016.2.3'
-  sha256 'e0dc0b829c9c10b85b447acf7f1d9465e230e702d72951296f9808f420945b3f'
+  version '2017.1,171.3780.121'
+  sha256 'eaa0d75d5fc80982072ec5f13481b3ce0031fd1a2aa6bbd907d77be821ab7f4d'
 
-  url "https://download.jetbrains.com/cpp/CLion-#{version}.dmg"
+  url "https://download.jetbrains.com/cpp/CLion-#{version.before_comma}.dmg"
+  appcast 'https://data.services.jetbrains.com/products/releases?code=CL&latest=true&type=release',
+          checkpoint: 'd6220afe07e4ed9833e180e41de33447b266e7844bd6b96bf5e22546bb470095'
   name 'CLion'
-  homepage 'https://www.jetbrains.com/clion'
+  homepage 'https://www.jetbrains.com/clion/'
 
+  auto_updates true
   conflicts_with cask: 'clion-eap'
 
   app 'CLion.app'
+
+  uninstall_postflight do
+    ENV['PATH'].split(File::PATH_SEPARATOR).map { |path| File.join(path, 'clion') }.each { |path| File.delete(path) if File.exist?(path) }
+  end
 
   zap delete: [
                 "~/Library/Preferences/CLion#{version.major_minor}",

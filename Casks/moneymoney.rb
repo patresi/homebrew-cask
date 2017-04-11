@@ -1,10 +1,10 @@
 cask 'moneymoney' do
-  version '2.2.14'
-  sha256 'f86ebbd74dd38ee36ad45e65055d616538235aa1ada13624290b06b96de21a71'
+  version '2.2.16'
+  sha256 '30907acaff5fef387c41dc6928565710282f5cf078509bbbcf12bdad448ba3eb'
 
   url 'https://service.moneymoney-app.com/1/MoneyMoney.zip'
   appcast 'https://service.moneymoney-app.com/1/Appcast.xml',
-          checkpoint: 'e2247ed7b757bcdb3f0276f9a9ecb8d60885760e9ff36778d175f82895e8ea4f'
+          checkpoint: '585815e5ce50cbee695b0670b4778dfc8cfbdc8e954a966c20819cf96221dadf'
   name 'MoneyMoney'
   homepage 'https://moneymoney-app.com/'
 

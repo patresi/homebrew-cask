@@ -1,11 +1,11 @@
 cask 'inspec' do
-  version '1.0.0-1'
-  sha256 '6bf1674a461cbc616b5e91ea5b426c226b00ffda7082add155bd6d0d1b33ba9d'
+  version '1.19.1-1'
+  sha256 '99b6b428570fb0e428df12ee2f2f1805c9e79a8b87fc08bcb7aa466e9ed32b81'
 
   # packages.chef.io was verified as official when first introduced to the cask
-  url "https://packages.chef.io/stable/mac_os_x/10.11/inspec-#{version}.dmg"
+  url "https://packages.chef.io/files/stable/inspec/#{version.major_minor_patch}/mac_os_x/10.12/inspec-#{version}.dmg"
   appcast 'https://github.com/chef/inspec/releases.atom',
-          checkpoint: 'c9905934b7e515e3f0486187dabee2bb43dc7a63677f0fdc0ca85bc0f316597a'
+          checkpoint: '45f3d1ca5d9001841b04289c1b6eeb56333d1478a54ec31f19d632fba8fcaa75'
   name 'InSpec by Chef'
   homepage 'http://inspec.io/'
 
@@ -13,7 +13,9 @@ cask 'inspec' do
 
   # As suggested in https://docs.chef.io/install_dk.html#mac-os-x
   uninstall_postflight do
-    system "sudo find /usr/local/bin -lname '/opt/inspec/*' -delete"
+    system_command '/usr/bin/find',
+                   args: ['/usr/local/bin', '-lname', '/opt/inspec/*', '-delete'],
+                   sudo: true
   end
 
   uninstall pkgutil: 'com.getchef.pkg.inspec',

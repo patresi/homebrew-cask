@@ -1,13 +1,13 @@
 cask 'displaycal' do
-  version '3.1.7.0'
-  sha256 '0c5f4252563d9bb411b17ec663905fb9b9b2349cf45f373f1ce745bdb350b020'
+  version '3.2.4.0'
+  sha256 'a0d31130473637422fef0c4c2f56de43439f5dd820e879fad5bfa97385f352cf'
 
   # sourceforge.net/dispcalgui was verified as official when first introduced to the cask
   url "https://downloads.sourceforge.net/dispcalgui/release/#{version}/DisplayCAL-#{version}.dmg"
   appcast 'https://sourceforge.net/projects/dispcalgui/rss?path=/release',
-          checkpoint: '10f7fca2eaaa03dd2c057937be3832dd8c4af22c7d03cd3698a9d9e2719ad971'
+          checkpoint: 'd5b7860c827fe9f1d2187148610cfd32927d46710d8d14498212a134c91e6902'
   name 'DisplayCAL'
-  homepage 'https://displaycal.net'
+  homepage 'https://displaycal.net/'
 
   depends_on formula: 'argyll-cms'
 

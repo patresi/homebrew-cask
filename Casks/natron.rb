@@ -1,11 +1,11 @@
 cask 'natron' do
-  version '2.1.4'
-  sha256 'ec4e231fefa2063a06877353acdb5ad52d0ee87fa21e4b47a1fa51b366fc32cb'
+  version '2.2.6'
+  sha256 '90f154cde045e4a72727f8073e6bb12550a464d9b345b6d9370682d0f95165db'
 
   url "https://downloads.natron.fr/Mac/releases/Natron-#{version}.dmg",
       referer: 'https://natron.fr/download/?os=Mac'
   appcast 'https://github.com/MrKepzie/Natron/releases.atom',
-          checkpoint: '62b1dd010e40674cf6bdbabfe17dae6c8986ba8c5b8a3776eab63ecbc5d456fb'
+          checkpoint: 'b275a3eb14ba19e50c55bbf49cc6a54e03aaba19675bf5c7e2f889c304017159'
   name 'Natron'
   homepage 'https://natron.fr/'
 

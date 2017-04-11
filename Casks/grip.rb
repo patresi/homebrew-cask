@@ -1,11 +1,11 @@
 cask 'grip' do
-  version '1.5.0-rc2'
-  sha256 '8b2c9d08c9c36d0c0fb68765c03769a6366063c162add7945f0af21c19775a01'
+  version '1.5.2'
+  sha256 '8d37ec19dd204131e205bbe02416d013f1827bab468a8d396a0369e79fa63adb'
 
   # github.com/WPIRoboticsProjects/GRIP was verified as official when first introduced to the cask
-  url "https://github.com/WPIRoboticsProjects/GRIP/releases/download/v#{version}/GRIP-#{version}-x64.dmg"
+  url "https://github.com/WPIRoboticsProjects/GRIP/releases/download/v#{version}/GRIP-v#{version}-x64.dmg"
   appcast 'https://github.com/WPIRoboticsProjects/GRIP/releases.atom',
-          checkpoint: '351ceeb68abdf0593404e7a01c0510f4fbc45e83dad0b7c6dbfbd4e18c458b1a'
+          checkpoint: '705846f8990f130fa5fd9faa0163f758b28b73653050a490f7d2a06f83ef2141'
   name 'GRIP Computer Vision Engine'
   name 'GRIP'
   homepage 'https://wpiroboticsprojects.github.io/GRIP/'
